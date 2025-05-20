@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
       
       try {
-        const response = await fetch('https://portfolio-backend-nptk.onrender.com', {
+        const response = await fetch('https://portfolio-backend-nptk.onrender.com/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
