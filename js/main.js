@@ -57,28 +57,28 @@ document.addEventListener('DOMContentLoaded', function() {
         message: document.getElementById('message').value
       };
       
-      try {
-        const response = await fetch('https://portfolio-backend-nptk.onrender.com/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-        
-        const result = await response.json();
-        
-        // Show toast message
-        showToast(response.ok ? 'success' : 'error', result.message);
-        
-        if (response.ok) {
-          // Clear form
-          contactForm.reset();
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        showToast('error', 'An unexpected error occurred. Please try again.');
-      }
+     try {
+  const response = await fetch('https://portfolio-backend-nptk.onrender.com/api/contact', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  });
+
+  const result = await response.json();
+
+  // Show toast message
+  showToast(response.ok ? 'success' : 'error', result.message || 'Something went wrong.');
+
+  if (response.ok) {
+    contactForm.reset();
+  }
+} catch (error) {
+  console.error('Error:', error);
+  showToast('error', 'An unexpected error occurred. Please try again.');
+}
+
     });
   }
   
