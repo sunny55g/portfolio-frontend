@@ -325,5 +325,33 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+
   </body>
-</html>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const response = await fetch("https://your-backend.onrender.com/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      if (response.ok) {
+        alert("Message sent!");
+        form.reset();
+      } else {
+        alert("Error sending message.");
+      }
+    });
+  });
+</script>
+
+  </html>
+
